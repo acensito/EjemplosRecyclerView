@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Pelicula> peliculas = obtenerListaPeliculas();
+    private final List<Pelicula> peliculas = obtenerListaPeliculas();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,4 +43,4 @@ public class MainActivity extends AppCompatActivity {
         // Añadir más películas según sea necesario
         return listaPeliculas;
     }
-};
+}
