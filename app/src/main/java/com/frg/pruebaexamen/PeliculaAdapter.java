@@ -1,27 +1,18 @@
 package com.frg.pruebaexamen;
 
-import android.annotation.SuppressLint;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class PeliculaAdapter extends ListAdapter<Pelicula, PeliculaViewHolder>{
+import java.util.List;
 
-    protected PeliculaAdapter() {
-        super(new DiffUtil.ItemCallback<Pelicula>() {
-            @Override
-            public boolean areItemsTheSame(@NonNull Pelicula oldItem, @NonNull Pelicula newItem) {
-                return oldItem.getId() == newItem.getId();
-            }
+public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaViewHolder> {
 
-            @SuppressLint("DiffUtilEquals")
-            @Override
-            public boolean areContentsTheSame(@NonNull Pelicula oldItem, @NonNull Pelicula newItem) {
-                return oldItem.equals(newItem);
-            }
-        });
+    private final List<Pelicula> peliculas;
+
+    public PeliculaAdapter(List<Pelicula> peliculas) {
+        this.peliculas = peliculas;
     }
 
     @NonNull
@@ -32,8 +23,11 @@ public class PeliculaAdapter extends ListAdapter<Pelicula, PeliculaViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
-        Pelicula current = getItem(position);
+        Pelicula current = peliculas.get(position);
         holder.render(current);
     }
+
+    @Override
+    public int getItemCount() {  return peliculas.size(); }
 
 }

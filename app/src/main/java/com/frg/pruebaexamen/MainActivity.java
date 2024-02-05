@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Pelicula> peliculas = obtenerListaPeliculas();
+    private final List<Pelicula> peliculas = obtenerListaPeliculas();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.rvPeliculas);
-        PeliculaAdapter adapter = new PeliculaAdapter();
-
+        PeliculaAdapter adapter = new PeliculaAdapter(peliculas);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        adapter.submitList(peliculas);
     }
 
     //metodo que devuelve una lista de peliculas
