@@ -41,4 +41,4 @@ public class MainActivity extends AppCompatActivity {
         // Añadir más películas según sea necesario
         return listaPeliculas;
     }
-};
+}
